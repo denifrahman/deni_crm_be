@@ -7,6 +7,7 @@ import (
 	"deni-be-crm/internal/models"
 	"deni-be-crm/routes"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/gin-contrib/cors"
@@ -32,7 +33,12 @@ func main() {
 
 func Run() {
 	getRoutes()
-	router.Run(":3400")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	router.Run(fmt.Sprintf(":%s", port))
 }
 
 func getRoutes() {
