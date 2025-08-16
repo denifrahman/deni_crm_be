@@ -40,6 +40,10 @@ var ProviderSet = wire.NewSet(
 	repositories.NewDealsRepository,
 	services.NewDealsService,
 	handlers.NewDealHandler,
+
+	repositories.NewDashboardRepository,
+	services.NewDashboardService,
+	handlers.NewDashboardHandler,
 )
 
 func InitHandlers(db *gorm.DB) *Handlers {

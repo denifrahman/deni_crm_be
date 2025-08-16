@@ -34,6 +34,9 @@ func InitHandlers(db *gorm.DB) *Handlers {
 	orderHandler := handlers.NewOrderHandler(iOrdersService, iCustomersService)
 	productHandler := handlers.NewProductHandler(iProductsService)
 	customerHandler := handlers.NewCustomerHandler(iCustomersService)
+	iDashboardRepository := repositories.NewDashboardRepository(db)
+	iDashboardService := services.NewDashboardService(iDashboardRepository)
+	dashboardHandler := handlers.NewDashboardHandler(iDashboardService)
 	dealHandler := handlers.NewDealHandler(iDealsService)
 	iSubscriptionsRepository := repositories.NewSubscriptionsRepository(db)
 	iSubscriptionsService := services.NewSubscriptionsService(iSubscriptionsRepository)
@@ -44,6 +47,7 @@ func InitHandlers(db *gorm.DB) *Handlers {
 		OrderHandler:        orderHandler,
 		ProductHandler:      productHandler,
 		CustomerHandler:     customerHandler,
+		DashboardHandler:    dashboardHandler,
 		DealHandler:         dealHandler,
 		SubscriptionHandler: subscriptionHandler,
 	}
@@ -52,4 +56,4 @@ func InitHandlers(db *gorm.DB) *Handlers {
 
 // wire.go:
 
-var ProviderSet = wire.NewSet(repositories.NewLeadsRepository, services.NewLeadsService, handlers.NewLeadHandler, repositories.NewUserRepository, services.NewAuthService, handlers.NewAuthHandler, repositories.NewOrdersRepository, services.NewOrdersService, handlers.NewOrderHandler, repositories.NewProductsRepository, services.NewProductsService, handlers.NewProductHandler, repositories.NewSubscriptionsRepository, services.NewSubscriptionsService, handlers.NewSubscriptionHandler, repositories.NewCustomersRepository, services.NewCustomersService, handlers.NewCustomerHandler, repositories.NewDealsRepository, services.NewDealsService, handlers.NewDealHandler)
+var ProviderSet = wire.NewSet(repositories.NewLeadsRepository, services.NewLeadsService, handlers.NewLeadHandler, repositories.NewUserRepository, services.NewAuthService, handlers.NewAuthHandler, repositories.NewOrdersRepository, services.NewOrdersService, handlers.NewOrderHandler, repositories.NewProductsRepository, services.NewProductsService, handlers.NewProductHandler, repositories.NewSubscriptionsRepository, services.NewSubscriptionsService, handlers.NewSubscriptionHandler, repositories.NewCustomersRepository, services.NewCustomersService, handlers.NewCustomerHandler, repositories.NewDealsRepository, services.NewDealsService, handlers.NewDealHandler, repositories.NewDashboardRepository, services.NewDashboardService, handlers.NewDashboardHandler)

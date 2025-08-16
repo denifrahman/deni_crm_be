@@ -10,6 +10,7 @@ type Handlers struct {
 	OrderHandler        *handlers.OrderHandler
 	ProductHandler      *handlers.ProductHandler
 	CustomerHandler     *handlers.CustomerHandler
+	DashboardHandler    *handlers.DashboardHandler
 	DealHandler         *handlers.DealHandler
 	SubscriptionHandler *handlers.SubscriptionHandler
 }

@@ -58,6 +58,7 @@ func getRoutes() {
 	routes.OrderRoutes(v1, handlers.OrderHandler)
 	routes.SubscriptionRoutes(v1, handlers.SubscriptionHandler)
 	routes.CustomerRoutes(v1, handlers.CustomerHandler)
+	routes.DashboardRoutes(v1, handlers.DashboardHandler)
 }
 
 func migrateDb(db *gorm.DB) {
